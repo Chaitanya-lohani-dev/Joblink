@@ -138,5 +138,12 @@ db.prepare(`
   VALUES (?, ?, 'admin', 'Admin')
 `).run('admin@joblink.com', adminHash);
 
+const hrHash = bcrypt.hashSync('HR@123', 10);
+db.prepare(`
+  INSERT OR IGNORE INTO users (email, password_hash, role, full_name) 
+  VALUES (?, ?, 'hr', 'Aman')
+`).run('hr@joblink.com', adminHash);
+
+
 console.log('Database initialized successfully!');
 db.close();
